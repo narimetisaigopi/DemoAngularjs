@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel = "stylesheet" href = "https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+    <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
+    <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
+    <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
+    <script src = "https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+	<title>Udacity Demo</title>
+</head>
+<body ng-app="app" ng-cloak ng-controller="testCtrl">
+
+
+	<md-toolbar class="primary" hide>
+		<md-toolbar-title layout-align="center center">
+			<span text-align="center">Project Development</span>
+		</md-toolbar-title>
+	</md-toolbar>
+
+	<div class="header">
+		<a href="#" class="logo" text-color="#f1f1f1">Project Development</a>
+		<div class="header-left">
+			<a href="#">Home</a>
+			<a href="#">About</a>
+			<a href="#">Contact</a>
+		</div>
+	</div>
+	
+
+	<div  ng-controller="sliderController">
+		<div class="slider" ng-switch="slideshow" >
+			<div class="slider-content">
+				<!-- <img ng-repeat="slide in slidesList" src="{{slide.url}}" class="slideImages"> -->
+				<img src="{{slidesList[currentPage].url}}" class="slideImages">
+				<div class="bottom-center">
+					<span class="dot"></span>
+					<span class="dot"></span>
+					<span class="dot"></span>
+					<span class="dot"></span>	
+				</div>
+				
+			</div>		
+		</div>	
+
+		<h1 text-align="center" hide>Curret page {{currentPage}}</h1>
+	</div>
+
+	<div>
+		
+	<div class="bottom-center">
+		<span class="dot"></span>
+		<span class="dot"></span>
+		<span class="dot"></span>
+		<span class="dot"></span>	
+	</div>
+			
+	<md-content class="md-padding">
+		<h3 class="heading">CO-CREATED WITH INDUSTRY LEADERS</h3>
+	</md-content>
+	<div class="ce" ng-repeat="image in images" style="position: absolute;  margin-left: auto;">
+		<img src="{{image}}" alt="android" class="small-image">
+	</div>
+	<div class="divCard" ng-controller="programsListCtrl"  layout="row" layout-xs="column">
+		<md-card class="" ng-repeat="program in programs | orderBy:'program.name'" flex">
+			<!-- <md-card-header layout-align="center center" >
+				<md-card-avatar>
+					<img src="android.png" class="md-user-avatar">
+				</md-card-avatar>
+			</md-card-header> -->
+			<md-content class="md-padding">
+				<!-- <img src="{{program.url}}" style="display: block; margin-left: auto; margin-right: auto; width: 20%"> -->
+				<img src="{{program.url}}" class="center-image" >
+				<h3 style="text-align: center; white-space: pre-line;">{{program.name}}</h1>
+				<p style="text-align: center; color: #0DB6E5; font-weight:bold;">{{program.count}} PROGRAMS</p>
+				<!-- <md-icon svgIcon="right-arrow.svg">Title</md-icon> -->
+			</md-content>
+		</md-card>
+	</div>
+	<md-content>
+		<h3 class="heading">Personalised recommendations for you</h3>
+	</md-content>
+	<div class="divCard" ng-controller="personalRecoList"  layout="row" layout-xs="column">
+			<md-card ng-repeat="recommendation in personalRecoList">
+			<md-content class="md-padding">
+				<h3>{{recommendation.title}}</h3>
+				<p>{{recommendation.activity}}</p>
+			</md-content>
+		</md-card>
+	</div>
+	<md-content class="md-padding">
+		<h3 class="heading">Become a Front End Developer Be in-demand with Nanodegree Programs</h3>
+		<p class="subHeading">Master in-demand skills. Build and design industry-relevant projects. Earn a valued Nanodegree certification.<br>Launch your career in Data Science, Machine Learning, Android, iOS, and more.</p>
+	</md-content>
+	<div class="container" layout-align="center center">
+		<div class="center" >
+			<md-tabs>
+				<md-tab>
+					<md-table-label>POPULAR</md-table-label>
+				</md-tab>
+				<md-tab>
+					<md-table-label>NEW LAUNCHES</md-table-label>
+				</md-tab>
+				<md-tab>
+					<md-table-label>OFFERS</md-table-label>
+				</md-tab>
+			</md-tabs>
+		</div>
+	</div>
+	<div class="divCard" ng-controller="coursesList" layout="row" layout-xs="column">
+		<md-card ng-repeat="course in coursesList">
+		<md-card-header>
+			<md-card-avatar>
+				<img src="{{course.url}}" >
+			</md-card-avatar>
+			<md-card-header-text>
+				<span class="md-title">{{course.title}}</span>
+				<span class="md-subhead">{{course.by}}</span>
+			</md-card-header-text>
+		</md-card-header>
+		<img src="{{course.url}}" class="center-image" class="md-card-image"  layout-align="center"  >
+		<md-card-title>
+			<md-card-header-title>
+				<span class="md-headline">Available Courses</span>
+			</md-card-header-title>
+		</md-card-title>
+		<md-card-content>
+			<p text-align="justify">The titles of Washed Out's breakthrough song and the first single from Paracosm share the
+					two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...</p>
+		</md-card-content>
+		</md-card>
+	</div>
+	<div>
+		<div class="about">
+			<h3 class="about-title">Build Industry Relevant Skills</h3>
+			<p class="about-description">Get industry ready with our Nanodegree programs co-created with the world's most forward–thinking companies–Google, Facebook, AT&T, IBM, GitHub, and more. Build practical skills by working on projects based on global challenges faced by industry leaders.</p>
+		</div>
+		<div class="about">
+			<h3 class="about-title">Learn through an immersive experience</h3>
+			<p class="about-description">Experience a whole new way of learning with our Study Groups and Knowledge Platform. Collaborate with fellow students from around the globe and get feedback from Udacity Mentors.</p>
+		</div>
+		<div class="about">
+			<h3 class="about-title">Get Job Ready</h3>
+			<p class="about-description">Propel your career by getting job ready with our expert career guidance. Learn how to make resumes that get noticed and see them in action at our career fairs! Get access to our network of 100+ Hiring partners.</p>
+		</div>
+	</div>
+	<div class="bottom-menu">
+		<a href="#">@Copy Rights are reserved </a>
+	</div>
+	</div>
+
+</body>
+</html>
